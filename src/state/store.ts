@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import RoundCounter from '../features/RoundCounter/RoundCounterSlice';
+import Game from './GamaSlice';
 
 export const store = configureStore({
   reducer: {
-    RoundCounter
+    Game
   }
 });
 

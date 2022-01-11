@@ -1,6 +1,6 @@
 import { Button, Flex, Box } from '@chakra-ui/react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectCurrentRound, nextRound } from './RoundCounterSlice';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
+import { selectCurrentRound, nextRound } from '../../state/GamaSlice';
 import { Card } from '../../ui-kit/Card';
 
 export const RoundCounter = () => {

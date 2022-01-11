@@ -1,17 +1,17 @@
 import { Button, Flex } from '@chakra-ui/react';
 import { CurrentRulesList } from './CurrentRulesList.component';
-import { useEffect, useState } from 'react';
 import { CurrentRule, Rule } from '../../models/Rules.types';
-import { useAppSelector } from '../../app/hooks';
-import { selectCurrentRound } from '../RoundCounter/RoundCounterSlice';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
+import { selectCurrentRound, newRuleAdded, selectCurrentRules } from '../../state/GamaSlice';
 import { Color } from '../../models/Colors.types';
 import { allRules } from './allRules';
 import { colors } from './colors';
 import { Card } from '../../ui-kit/Card';
 
 export const Rules = () => {
-  const [currentRules, setCurrentRules] = useState<CurrentRule[]>([]);
   const currentRound = useAppSelector(selectCurrentRound);
+  const currentRules = useAppSelector(selectCurrentRules);
+  const dispatch = useAppDispatch();
   const pickRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
   const generateRuleNameWithColor = (name: string, color: string) => {
     return name.replace('{COLOR}', color);
@@ -29,15 +29,8 @@ export const Rules = () => {
       lastRound: currentRound + pickedRule.duration,
       color: pickedRule.hasColor ? pickedColor.color : undefined
     };
-    setCurrentRules((prevState) => [...prevState, randomRule]);
+    dispatch(newRuleAdded(randomRule));
   };
-
-  useEffect(() => {
-    const filteredRules = currentRules.filter((rule) => {
-      return rule.lastRound !== currentRound;
-    });
-    setCurrentRules(filteredRules);
-  }, [currentRound]);
 
   return (
     <Card p={5}>
