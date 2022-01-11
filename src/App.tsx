@@ -1,58 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Box, Text, Flex, Image } from '@chakra-ui/react';
+import { Rules } from './features/Rules/Rules.component';
+import { RoundCounter } from './features/RoundCounter/RoundCounter.component';
+import MonopolyLogo from './assets/monopoly-logo.png';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Flex minH="100vh" justifyContent="center" pb={10} pt={10}>
+      <Box w="full" maxW="1000px">
+        <Box align="center" mb={10}>
+          <Image src={MonopolyLogo} alt="Monopoly Logo" w={300} />
+          <Text fontSize="2xl" ml={2}>
+            <strong>Extension</strong>
+          </Text>
+        </Box>
+
+        <Box p={5}>
+          <RoundCounter />
+          <Rules />
+        </Box>
+      </Box>
+    </Flex>
   );
-}
+};
 
 export default App;
