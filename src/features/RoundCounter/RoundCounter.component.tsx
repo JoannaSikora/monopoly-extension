@@ -13,7 +13,7 @@ export const RoundCounter = () => {
         <Button onClick={() => dispatch(nextRound())}>Next round</Button>
       </Flex>
       <Flex justifyContent="center" mt={-7}>
-        <Box align="center" fontWeight={500} mr={5}>
+        <Box data-testid="round-number" align="center" fontWeight={500} mr={5}>
           <Box fontSize="4xl" fontWeight={700}>
             {currentRound}
           </Box>

@@ -1,5 +1,5 @@
 import { Button, Flex } from '@chakra-ui/react';
-import { CurrentRulesList } from './CurrentRulesList.component';
+import { CurrentRulesList } from './CurrentRulesList/CurrentRulesList.component';
 import { CurrentRule, Rule } from '../../models/Rules.types';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { selectCurrentRound, newRuleAdded, selectCurrentRules } from '../../state/GamaSlice';
