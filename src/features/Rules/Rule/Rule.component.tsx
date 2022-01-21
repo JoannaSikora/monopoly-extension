@@ -1,8 +1,8 @@
 import { Flex, Text, CloseButton, WrapItem } from '@chakra-ui/react';
-import { CurrentRule } from '../../models/Rules.types';
-import { pluralize } from './CurrentRulesList.helpers';
-import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import { ruleRemoved, selectCurrentRound } from '../../state/GamaSlice';
+import { CurrentRule } from '../../../models/Rules.types';
+import { pluralize } from './Rule.helpers';
+import { useAppDispatch, useAppSelector } from '../../../state/hooks';
+import { ruleRemoved, selectCurrentRound } from '../../../state/GamaSlice';
 
 interface RuleProps {
   rule: CurrentRule;
@@ -17,7 +17,7 @@ export const Rule = ({ rule }: RuleProps) => {
   };
 
   return (
-    <WrapItem>
+    <WrapItem data-testid="current-rule">
       <Flex
         flexDir="column"
         justifyContent="space-between"
@@ -30,6 +30,7 @@ export const Rule = ({ rule }: RuleProps) => {
         borderTopWidth={40}
         borderTopColor={rule.color}>
         <CloseButton
+          data-testid="remove-rule-button"
           position="absolute"
           bg="white"
           rounded="lg"
@@ -44,7 +45,7 @@ export const Rule = ({ rule }: RuleProps) => {
         <Text align="center" fontSize="xs">
           {rule.description}
         </Text>
-        <Text fontSize="sm" color={rule.color}>
+        <Text data-testid="rule-validation-time" fontSize="sm" color={rule.color}>
           Valid for <strong>{ruleDurationLeft(rule.lastRound)}</strong> more{' '}
           {pluralize(ruleDurationLeft(rule.lastRound), 'round')}
         </Text>

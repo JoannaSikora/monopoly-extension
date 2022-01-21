@@ -1,6 +1,6 @@
 import { Flex, Wrap } from '@chakra-ui/react';
-import { CurrentRule } from '../../models/Rules.types';
-import { Rule } from './Rule';
+import { CurrentRule } from '../../../models/Rules.types';
+import { Rule } from '../Rule/Rule.component';
 
 interface CurrentRulesListProps {
   currentRules: CurrentRule[];
